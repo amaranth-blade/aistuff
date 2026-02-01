@@ -35,5 +35,9 @@ int main() {
     for (int i = 0; i < AmountOfWords; i++) {
         cout << WordArray[i] << ' ';
     }
+    //the part of the code that sorts the array into a vector
+    for (int i = 0; i <= AmountOfWords; i++ ) {
+        //test comment please ignore
+    }
     return 0;
 }
