@@ -1,0 +1,7 @@
+The first panel shows the source code for our first program. The second one shows the result of the program once
+compiled and executed. The way to edit and compile a program depends on the compiler you are using. Depending
+on whether it has a Development Interface or not and on its version. Consult the compilers section and the manual
+or help included with your compiler if you have doubts on how to compile a C++ console program.
+The previous program is the typical program that programmer apprentices write for the first time, and its result is
+the printing on screen of the "Hello World!" sentence. It is one of the simplest programs that can be written in
+C++, but it already contains the fundament
