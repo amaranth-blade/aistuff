@@ -1,0 +1,17 @@
+https://www.educative.io/blog/deep-learning-text-generation-markov-chains
+https://benhoyt.com/writings/markov-chain/
+https://github.com/amaranth-blade/aistuff
+
+
+> Effettuare modifiche e commit
+    >Modifica i file nell'editor.
+    > Nella vista Source Control, vedi i file modificati. 
+    > Clicca su + per aggiungere i file allo staging. 
+    >Scrivi un messaggio di commit e clicca su ✓ per fare il commit.
+    >Usa Sync Changes (freccia rotante nella barra di stato) per pushare i commit su GitHub. 
+
+Clonare un repository
+    Apri il Command Palette (Ctrl+Shift+P). 
+    Digita Git: Clone.
+    Inserisci l'URL del repository GitHub.
+    Seleziona la cartella locale dove clonare il progetto. 
