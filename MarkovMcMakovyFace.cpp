@@ -8,9 +8,9 @@
 #include <fstream>
 using namespace std;
 int main() {
-
+    struct timeval time;
+    srand((time.tv_sec * 1000) + (time.tv_usec / 1000));
     ifstream SampleFile("sample.txt");
-
     string SampleText;
     getline(SampleFile,SampleText);
     string CurrentStoredWord;
@@ -48,27 +48,24 @@ int main() {
             exit; 
         }
     } // ^ Puts all the words in the sample text into an array
-    for (int i = 0; i < AmountOfWords; i++) {
-        cout << WordArray[i] << ' ';
-    }
+    //for (int i = 0; i < AmountOfWords; i++) {
+    //   cout << WordArray[i] << ' ';
+    //}
     cout << "\n";
     //the part of the code that sorts the simple word array into a bigram map 
     //its borked, i hate it, i disown it
+    //oh my god bruh i messed up the god darn map
     for (int i = 0; i < AmountOfWords; i++) {
         string w1 = WordArray[i];
         string w2;
-        if (i + 1 <= AmountOfWords) {
-          string w2 = WordArray[i + 1]; 
-        }        
-        if (bigrams.find(w1) == bigrams.end()) {
-            bigrams[w1] = {};
-        } else {
-            if (!bigrams[w1][w2]) {
-                bigrams[w1][w2] = 1;
-            } else{
-                bigrams[w1][w2] += 1;
-            }        
+        if (i + 1 < AmountOfWords) {
+          w2 = WordArray[i + 1]; 
         }
+        if (!bigrams[w1][w2]) {
+            bigrams[w1][w2] = 1;
+        } else{
+            bigrams[w1][w2] += 1;
+        }        
 
     }
     int test_int = rand() / (RAND_MAX / AmountOfWords + 1);
@@ -78,7 +75,7 @@ int main() {
         vector<string> Possibles = {};
         for (auto it = bigrams[SeedWord].begin(); it != bigrams[SeedWord].end(); ++it){
         // add the key to the vector how many times the second time says?
-           for (int k = 0; k <+ it -> second;k++) {
+           for (int k = 0; k <= it -> second;k++) {
             Possibles.push_back(it->first);
            }            
         }
@@ -87,8 +84,12 @@ int main() {
         SeedWord = NewSeed;       
     }
     for (int i = 0; i < Output.size(); i++) {
-        cout << Output[i];
+        cout << Output[i] << " ";
     }
     //update 4, god damnit
+    //update 5, im so sick of tihs
+    //update 6 yayyyyy it works!!!
+    //update 7 it keeps repeating words :sob:
+    cout << "hi";
     return 0;
 }
