@@ -52,7 +52,8 @@ int main() {
         cout << WordArray[i] << ' ';
     }
     cout << "\n";
-    //the part of the code that sorts the simple word array into a bigram map
+    //the part of the code that sorts the simple word array into a bigram map 
+    //its borked, i hate it, i disown it
     for (int i = 0; i < AmountOfWords; i++) {
         string w1 = WordArray[i];
         string w2;
