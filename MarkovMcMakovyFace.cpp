@@ -11,8 +11,8 @@ int main() {
 
     ifstream SampleFile("sample.txt");
 
-    string SampleText_TEMP;
-    getline(SampleFile,SampleText_TEMP);
+    string SampleText;
+    getline(SampleFile,SampleText);
     string CurrentStoredWord;
     char PreviousCharacter;
     int AmountOfWords = 0;
@@ -21,11 +21,10 @@ int main() {
     cout << "Quante parole vuoi predirre?";
     cin >> AmountOfWordsToPredict_NonCon;
     const int AmountOfWordsToPredict = AmountOfWordsToPredict_NonCon;
-    if (SampleText_TEMP[SampleText_TEMP.length()-1] != ' ') {
-        SampleText_TEMP = SampleText_TEMP + ' '; 
-    }   
-    const string SampleText = SampleText_TEMP;
-    for (int i = 0; i < SampleText.length(); i++) {
+    if (SampleText[SampleText.length()] != ' ') {
+        SampleText = SampleText + ' '; 
+    } 
+    for (int i = 0; i <= SampleText.length(); i++) {
         if (SampleText[i] == ' ' &&  PreviousCharacter != ' ') {
             AmountOfWords++;
             PreviousCharacter = ' ';
@@ -33,17 +32,20 @@ int main() {
         else {
             PreviousCharacter = SampleText[i];
         }
-    } // ^ Finds the amount of words in the sample text, so the array size may correspond to it.
+    } // ^ Finds the amount of words in the sample text, so the array size may corresp50nd to it.
     string WordArray[AmountOfWords];
     map<string, map<string, int>> bigrams;
-    for (int i = 0; i < SampleText.length(); i++) {s
+    for (int i = 0; i < SampleText.length(); i++) {
         if (SampleText[i] != ' ' && !ispunct(SampleText[i])) {
             CurrentStoredWord += SampleText[i];
         }
-        else if (SampleText[i] == ' ') {
+        else if (SampleText[i] == ' ' && CurrentWordArrayPosition != AmountOfWords) {
             WordArray[CurrentWordArrayPosition] = CurrentStoredWord;
             CurrentWordArrayPosition++;
             CurrentStoredWord = "";
+        } else {
+            WordArray[CurrentWordArrayPosition - 1] = CurrentStoredWord;
+            exit; 
         }
     } // ^ Puts all the words in the sample text into an array
     for (int i = 0; i < AmountOfWords; i++) {
@@ -53,7 +55,10 @@ int main() {
     //the part of the code that sorts the simple word array into a bigram map
     for (int i = 0; i < AmountOfWords; i++) {
         string w1 = WordArray[i];
-        string w2 = WordArray[i++];
+        string w2;
+        if (i + 1 <= AmountOfWords) {
+          string w2 = WordArray[i + 1]; 
+        }        
         if (bigrams.find(w1) == bigrams.end()) {
             bigrams[w1] = {};
         } else {
@@ -63,8 +68,10 @@ int main() {
                 bigrams[w1][w2] += 1;
             }        
         }
+
     }
-    string SeedWord = WordArray[rand() % AmountOfWords]; 
+    int test_int = rand() / (RAND_MAX / AmountOfWords + 1);
+    string SeedWord = WordArray[test_int]; 
     vector<string> Output;
     for (int i = 0; i < AmountOfWordsToPredict; i++) {
         vector<string> Possibles = {};
@@ -81,6 +88,6 @@ int main() {
     for (int i = 0; i < Output.size(); i++) {
         cout << Output[i];
     }
-    //this should god willingly print my map, update what, thrid update please end my suffering
+    //update 4, god damnit
     return 0;
 }
